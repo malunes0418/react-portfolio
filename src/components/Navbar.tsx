@@ -1,59 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Navbar: React.FC = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-    return (
-        <nav className="bg-white shadow">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    <div className="flex">
-                        <div className="flex-shrink-0 flex items-center">
-                            <img
-                                className="block lg:hidden h-8 w-auto"
-                                src="https://via.placeholder.com/40"
-                                alt="Logo"
-                            />
-                            <img
-                                className="hidden lg:block h-8 w-auto"
-                                src="https://via.placeholder.com/60"
-                                alt="Logo"
-                            />
-                        </div>
-                        <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                            <a
-                                href="/about"
-                                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                            >
-                                About
-                            </a>
-                            <a
-                                href="/my-works"
-                                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                            >
-                                My Works
-                            </a>
-                            <a
-                                href="#"
-                                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                            >
-                                My Services
-                            </a>
-                            <a
-                                href="#"
-                                className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                            >
-                                Contact Me
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    )
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="fixed top-0 left-0 w-full transition duration-600 bg-red-700 z-10">
+      <div className="container flex justify-between items-center py-5 px-10">
+        <a href="#" className="logo font-bold text-white text-2xl">
+          <span>OM</span>EGA
+        </a>
+        <i
+          className="fas fa-bars text-white text-2xl cursor-pointer md:hidden"
+          onClick={toggleMenu}
+        ></i>
+        <ul
+          className={`${
+            isOpen ? "right-0" : "right-full"
+          } transition duration-500 bg-red-700 fixed top-0 w-64 h-screen py-10 md:static md:bg-transparent md:w-auto md:h-auto md:p-0 md:flex md:items-center md:space-x-8`}
+        >
+          <li>
+            <a href="#header" className="text-white font-medium">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#about" className="text-white font-medium">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#services" className="text-white font-medium">
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="#portfolio" className="text-white font-medium">
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="text-white font-medium">
+              Contact Me
+            </a>
+          </li>
+          <i
+            className="fas fa-times text-white text-2xl absolute top-4 right-4 cursor-pointer md:hidden"
+            onClick={toggleMenu}
+          ></i>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
